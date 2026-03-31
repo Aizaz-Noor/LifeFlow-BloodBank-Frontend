@@ -1,4 +1,4 @@
-# 🩸 LifeFlow — Blood Bank Management System
+# LifeFlow Blood Bank Management System
 
 > A modern, full-featured frontend for managing blood bank operations — donors, inventory, donation camps, requests, TTI screening, and more.
 
@@ -6,7 +6,7 @@
 
 ---
 
-## 🚀 Tech Stack
+## Tech Stack
 
 | Technology | Version |
 |---|---|
@@ -17,7 +17,7 @@
 
 ---
 
-## 📁 Project Structure
+## Project Structure
 
 ```
 BloodBank-Frontend/
@@ -50,23 +50,23 @@ BloodBank-Frontend/
 
 ---
 
-## ✨ Features
+## Features
 
-- 🔐 **Authentication** — Login / Signup with role-based views
-- 📊 **Dashboard** — Real-time blood inventory KPIs
-- 👥 **Donor Management** — Add, edit, search, and filter donors
-- 📋 **Blood Requests** — Track and fulfil incoming blood requests
-- 🏕️ **Camp Management** — Schedule and manage donation camps
-- 🧪 **TTI Screening** — Track Transfusion-Transmissible Infection tests
-- 🧬 **Thalassemia Module** — Dedicated patient management
-- 📉 **Wastage Tracking** — Log and analyze blood unit wastage
-- 📝 **Audit Log** — Full system activity trail
-- 📈 **Reports** — Exportable analytics and statistics
-- 🏠 **Public Home Page** — Donor recruitment landing page
+-  **Authentication** — Login / Signup with role-based views
+-  **Dashboard** — Real-time blood inventory KPIs
+-  **Donor Management** — Add, edit, search, and filter donors
+-  **Blood Requests** — Track and fulfil incoming blood requests
+-  **Camp Management** — Schedule and manage donation camps
+-  **TTI Screening** — Track Transfusion-Transmissible Infection tests
+-  **Thalassemia Module** — Dedicated patient management
+-  **Wastage Tracking** — Log and analyze blood unit wastage
+-  **Audit Log** — Full system activity trail
+-  **Reports** — Exportable analytics and statistics
+-  **Public Home Page** — Donor recruitment landing page
 
 ---
 
-## 🛠️ Getting Started
+## Getting Started
 
 ### Prerequisites
 
@@ -98,19 +98,19 @@ npm run preview
 
 ---
 
-## 📸 Screenshots
+## Screenshots
 
 > Dashboard, Donor Management, and Audit Log screenshots can be found in the `docs/` folder (coming soon).
 
 ---
 
-## 👨‍💻 Author
+##  Author
 
-**Aizaz Noor** — Software Engineering, Semester 3  
-📧 aizaznoorkhuwaja@gmail.com
+**Aizaz Noor** Software Engineering, you guys can reach out me there:
+aizaznoorkhuwaja@gmail.com
 
 ---
 
 ## 📄 License
 
-This project is for academic purposes — **LifeFlow Blood Bank Management System** (University Project).
+This project is for academic purposes **LifeFlow Blood Bank Management System** (University Project).
