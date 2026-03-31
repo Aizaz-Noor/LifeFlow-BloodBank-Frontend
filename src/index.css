@@ -1,0 +1,411 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+/* ── Design Tokens — Light (default) ── */
+:root {
+  --red: #FF3B30;
+  --red-light: #FF6961;
+  --red-bg: #FFF1F0;
+  --red-bg2: #FFE5E3;
+  --green: #34C759;
+  --green-bg: #F0FBF4;
+  --orange: #FF9500;
+  --orange-bg: #FFF8EE;
+  --blue: #007AFF;
+  --blue-bg: #EFF6FF;
+
+  --text-primary: #1D1D1F;
+  --text-secondary: #6E6E73;
+  --text-tertiary: #AEAEB2;
+
+  --bg-page: #F5F5F7;
+  --bg-card: #FFFFFF;
+  --bg-sidebar: #FFFFFF;
+  --bg-input: #FAFAFA;
+  --bg-hover: #F5F5F7;
+  --sidebar-border: #E8E8ED;
+
+  --border: #E8E8ED;
+  --border-hover: #D1D1D6;
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.05);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.08), 0 1px 2px rgba(0, 0, 0, 0.04);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08), 0 2px 4px rgba(0, 0, 0, 0.04);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.10), 0 4px 8px rgba(0, 0, 0, 0.04);
+  --shadow-hover: 0 8px 28px rgba(0, 0, 0, 0.12), 0 4px 10px rgba(0, 0, 0, 0.06);
+
+  --radius-sm: 8px;
+  --radius: 12px;
+  --radius-lg: 16px;
+  --radius-xl: 20px;
+}
+
+/* ── Dark Mode Overrides ── */
+[data-theme="dark"] {
+  --text-primary: #F5F5F7;
+  --text-secondary: #AEAEB2;
+  --text-tertiary: #6E6E73;
+
+  --bg-page: #0D0D0F;
+  --bg-card: #1C1C1E;
+  --bg-sidebar: #161618;
+  --bg-input: #252527;
+  --bg-hover: #2C2C2E;
+  --sidebar-border: #2C2C2E;
+
+  --border: #2C2C2E;
+  --border-hover: #3A3A3C;
+
+  --shadow-xs: 0 1px 2px rgba(0, 0, 0, 0.4);
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.5), 0 1px 2px rgba(0, 0, 0, 0.3);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.5), 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.6), 0 4px 8px rgba(0, 0, 0, 0.3);
+  --shadow-hover: 0 8px 28px rgba(0, 0, 0, 0.7), 0 4px 10px rgba(0, 0, 0, 0.4);
+
+  /* Status backgrounds dimmed for dark */
+  --red-bg: #2D1111;
+  --green-bg: #0D2218;
+  --orange-bg: #261A04;
+  --blue-bg: #0D1A2E;
+}
+
+/* ── Smooth theme transitions ── */
+*,
+*::before,
+*::after {
+  transition-property: background-color, border-color, color, box-shadow;
+  transition-duration: 0.25s;
+  transition-timing-function: ease;
+}
+
+/* ── Reset ── */
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  background: var(--bg-page);
+  color: var(--text-primary);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
+}
+
+/* ── Scrollbar ── */
+::-webkit-scrollbar {
+  width: 4px;
+  height: 4px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: #C7C7CC;
+  border-radius: 99px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: #AEAEB2;
+}
+
+/* ── Keyframe Animations ── */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes fadeUp {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideRight {
+  from {
+    opacity: 0;
+    transform: translateX(-16px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.92);
+  }
+
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes barGrow {
+  from {
+    width: 0 !important;
+  }
+}
+
+@keyframes ringGrow {
+  from {
+    stroke-dasharray: 0 100;
+  }
+}
+
+@keyframes pulse-dot {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 1;
+  }
+
+  50% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+@keyframes shimmer {
+  0% {
+    background-position: -200% center;
+  }
+
+  100% {
+    background-position: 200% center;
+  }
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-40px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+/* ── Animation Classes ── */
+.anim-fade-up {
+  animation: fadeUp 0.45s ease both;
+}
+
+.anim-fade-in {
+  animation: fadeIn 0.35s ease both;
+}
+
+.anim-scale-in {
+  animation: scaleIn 0.35s cubic-bezier(0.34, 1.56, 0.64, 1) both;
+}
+
+.anim-slide-r {
+  animation: slideRight 0.4s ease both;
+}
+
+.anim-bar-grow {
+  animation: barGrow 0.9s cubic-bezier(0.34, 1.1, 0.64, 1) both;
+}
+
+.anim-ring-grow {
+  animation: ringGrow 1.1s ease both;
+}
+
+/* ── Utility: Card hover lift ── */
+.card-hover {
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.card-hover:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-hover) !important;
+}
+
+/* ── Input base ── */
+input,
+select {
+  font-family: 'Inter', sans-serif;
+  font-size: 14px;
+}
+
+input:focus-visible,
+select:focus-visible,
+button:focus-visible {
+  outline: 2px solid var(--red);
+  outline-offset: 2px;
+}
+
+/* ── Login gradient bg ── */
+.login-bg {
+  min-height: 100vh;
+  background: linear-gradient(135deg, #fff5f5 0%, #f5f5f7 40%, #fff0f0 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* ── Shimmer for loading skeleton ── */
+.shimmer {
+  background: linear-gradient(90deg, #f0f0f0 25%, #e8e8e8 50%, #f0f0f0 75%);
+  background-size: 200% 100%;
+  animation: shimmer 1.5s linear infinite;
+}
+
+/* ════════════════════════════════════
+   MOBILE-FIRST RESPONSIVE DESIGN
+   Breakpoint: 768px
+════════════════════════════════════ */
+
+/* Mobile: hide sidebar by default, show hamburger */
+@media (max-width: 768px) {
+
+  /* Sidebar slides in from left when .sidebar-mobile-open is added */
+  aside {
+    transform: translateX(-100%) !important;
+    width: 240px !important;
+    box-shadow: 4px 0 24px rgba(0, 0, 0, 0.15);
+  }
+
+  aside.sidebar-mobile-open {
+    transform: translateX(0) !important;
+  }
+
+  /* Main content fills full width */
+  .main-content {
+    margin-left: 0 !important;
+  }
+
+  /* Show hamburger button */
+  .mobile-menu-btn {
+    display: flex !important;
+  }
+
+  /* Hide less important topbar elements */
+  .hide-mobile {
+    display: none !important;
+  }
+
+  /* Main padding smaller on mobile */
+  main {
+    padding: 16px !important;
+  }
+
+  /* Page H1 scales down */
+  h1 {
+    font-size: 22px !important;
+  }
+
+  /* Cards grid: single column on mobile */
+  [style*='minmax(400px'] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Stat cards: 2-column on mobile */
+  [style*='minmax(200px'] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  /* Inventory + Activity: stack vertically */
+  [style*='1fr 340px'] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Charts 2-col → 1-col */
+  [style*='1fr 1fr'] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Notifications panel: near-full width */
+  [role='dialog'] {
+    width: calc(100vw - 32px) !important;
+    right: 16px !important;
+    left: 16px !important;
+  }
+
+  /* Touch targets: minimum 44px */
+  button,
+  a,
+  select,
+  input {
+    min-height: 44px;
+  }
+
+  /* Body text: minimum 16px */
+  body {
+    font-size: 16px;
+  }
+}
+
+/* Small phones */
+@media (max-width: 480px) {
+
+  /* Stat grid: single column */
+  [style*='minmax(200px'] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Hero sections in Home.jsx */
+  [style*='1fr 1fr'] {
+    grid-template-columns: 1fr !important;
+  }
+
+  /* Home page stat bar: 2x2 grid */
+  [style*='repeat(4,1fr)'] {
+    grid-template-columns: 1fr 1fr !important;
+  }
+
+  /* Blood group matrix: scrollable */
+  table {
+    min-width: 600px;
+  }
+}
