@@ -6,9 +6,9 @@
 
 ---
 
-## 📸 Screenshots
+## Screenshots
 
-### 🌐 Public Landing Page
+### Public Landing Page
 
 | Hero Section | Blood Statistics |
 |:---:|:---:|
@@ -32,7 +32,7 @@
 
 ---
 
-### 🔐 Staff Portal
+### Staff Portal
 
 | Login | Dashboard |
 |:---:|:---:|
@@ -154,12 +154,6 @@ Open [http://localhost:5173](http://localhost:5173) in your browser.
 npm run build
 npm run preview
 ```
-
----
-
-## 📸 Screenshots
-
-> Dashboard, Donor Management, and Audit Log screenshots can be found in the `docs/` folder (coming soon).
 
 ---
 
