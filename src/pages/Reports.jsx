@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { MONTHLY_DONATIONS, BLOOD_INVENTORY, DONORS } from './data';
-import { Icons } from './icons';
+import { MONTHLY_DONATIONS, BLOOD_INVENTORY, DONORS } from '../lib/data';
+import { Icons } from '../lib/icons';
 
 /* ─── CSV Export helper ─── */
 function exportCSV(filename, headers, rows) {

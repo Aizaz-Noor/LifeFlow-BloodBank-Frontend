@@ -1,10 +1,10 @@
-﻿/* ═══════════════════════════════════════════════════════════
+/* -----------------------------------------------------------
    Home.jsx - Public-facing Landing Page
    Inspired by americanbloodbank.com structure
-═══════════════════════════════════════════════════════════ */
+----------------------------------------------------------- */
 
 import { useState, useCallback } from 'react';
-import { BLOOD_INVENTORY } from './data';
+import { BLOOD_INVENTORY } from '../lib/data';
 
 const BG_MAP = { '>50': '#F0FBF4', '>20': '#FFF8EE', low: '#FFF1F0' };
 const COLOR_MAP = { '>50': '#34C759', '>20': '#FF9500', low: '#FF3B30' };
@@ -150,7 +150,7 @@ const STEPS = [
     },
     {
         step: '03', title: 'Donate & Save Lives',
-        desc: 'A single donation saves up to 3 lives in 30–45 minutes.',
+        desc: 'A single donation saves up to 3 lives in 30�45 minutes.',
         icon: <svg width="24" height="24" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z" /></svg>,
     },
 ];
@@ -176,7 +176,7 @@ const CONTACT_INFO = [
     },
 ];
 
-/* ══ Donor Registration Modal ══ */
+/* -- Donor Registration Modal -- */
 function DonorRegistrationModal({ onClose }) {
     const BLOOD_GROUPS = ['A+', 'A-', 'B+', 'B-', 'AB+', 'AB-', 'O+', 'O-'];
     const [form, setForm] = useState({ name: '', cnic: '', phone: '', email: '', bloodGroup: '', city: '', dob: '', weight: '', lastDonation: '', conditions: '' });
@@ -213,7 +213,7 @@ function DonorRegistrationModal({ onClose }) {
                         </div>
                         <p style={{ fontSize: '14px', color: '#6E6E73' }}>Fill in your details and we will confirm your appointment within 24 hours.</p>
                     </div>
-                    <button onClick={onClose} style={{ width: '32px', height: '32px', borderRadius: '8px', border: 'none', background: '#F5F5F7', cursor: 'pointer', fontSize: '18px', color: '#6E6E73', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>×</button>
+                    <button onClick={onClose} style={{ width: '32px', height: '32px', borderRadius: '8px', border: 'none', background: '#F5F5F7', cursor: 'pointer', fontSize: '18px', color: '#6E6E73', display: 'flex', alignItems: 'center', justifyContent: 'center' }}>�</button>
                 </div>
                 {/* Form */}
                 <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
@@ -244,7 +244,7 @@ function DonorRegistrationModal({ onClose }) {
                         <textarea value={form.conditions} onChange={e => set('conditions', e.target.value)} rows={2} placeholder="Diabetes, hypertension, etc. (leave blank if none)" style={{ ...inputStyle, resize: 'vertical' }} onFocus={e => e.target.style.borderColor = '#FF3B30'} onBlur={e => e.target.style.borderColor = '#E8E8ED'} /></div>
                     {/* Eligibility reminder */}
                     <div style={{ padding: '12px 16px', background: '#FFF1F0', borderRadius: '10px', border: '1px solid #FFBBB8', fontSize: '13px', color: '#C0392B', lineHeight: 1.6 }}>
-                        <strong>Eligibility Criteria:</strong> Age 18-65, weight ≥ 50 kg, no major illness, 56+ days since last donation, and no recent tattoo/surgery (6 months).
+                        <strong>Eligibility Criteria:</strong> Age 18-65, weight = 50 kg, no major illness, 56+ days since last donation, and no recent tattoo/surgery (6 months).
                     </div>
                     <button onClick={() => { if (!form.name || !form.phone || !form.bloodGroup) return; setSubmitted(true); }}
                         style={{ padding: '14px', borderRadius: '12px', border: 'none', background: 'linear-gradient(135deg,#FF3B30,#C0392B)', color: '#fff', fontSize: '15px', fontWeight: 700, cursor: 'pointer', boxShadow: '0 4px 14px rgba(255,59,48,0.3)', transition: 'all 0.2s', marginTop: '4px' }}
@@ -258,7 +258,7 @@ function DonorRegistrationModal({ onClose }) {
     );
 }
 
-/* ══ Coming Soon Modal ══ */
+/* -- Coming Soon Modal -- */
 function ComingSoonModal({ title, onClose }) {
     return (
         <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.55)', backdropFilter: 'blur(8px)', zIndex: 300, display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '20px' }}
@@ -297,7 +297,7 @@ export default function HomePage({ onDonate, onRequest, onLogin }) {
             {showRegModal && <DonorRegistrationModal onClose={() => setShowRegModal(false)} />}
             {showPortalModal && <ComingSoonModal title="Donor & Patient Portal" onClose={() => setShowPortalModal(false)} />}
 
-            {/* ── TOP CONTACT BAR ── */}
+            {/* -- TOP CONTACT BAR -- */}
             <div style={{ background: '#CC2222', padding: '8px 5vw', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '8px' }}>
                 <div style={{ display: 'flex', gap: '24px', flexWrap: 'wrap', alignItems: 'center' }}>
                     <a href="tel:+920211115663" style={{ display: 'flex', alignItems: 'center', gap: '6px', color: '#fff', textDecoration: 'none', fontSize: '13px', fontWeight: 500, opacity: 0.95 }}>
@@ -333,7 +333,7 @@ export default function HomePage({ onDonate, onRequest, onLogin }) {
                 </div>
             </div>
 
-            {/* ── NAVBAR ── */}
+            {/* -- NAVBAR -- */}
             <header style={{ position: 'sticky', top: 0, zIndex: 50, background: 'rgba(255,255,255,0.97)', backdropFilter: 'blur(20px)', WebkitBackdropFilter: 'blur(20px)', borderBottom: '1px solid #E8E8ED', padding: '0 5vw', boxShadow: '0 1px 8px rgba(0,0,0,0.06)' }}>
                 <div style={{ maxWidth: '1200px', margin: '0 auto', height: '68px', display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
                     {/* Logo */}
@@ -392,15 +392,15 @@ export default function HomePage({ onDonate, onRequest, onLogin }) {
                 </div>
             </header>
 
-            {/* ── HERO ── */}
+            {/* -- HERO -- */}
             <section style={{ position: 'relative', background: '#fff', overflow: 'hidden', minHeight: '580px', display: 'flex', alignItems: 'center' }}>
-                {/* Right image panel — full bleed behind the grid */}
+                {/* Right image panel � full bleed behind the grid */}
                 <div style={{
                     position: 'absolute', right: 0, top: 0, bottom: 0, width: '46%', zIndex: 0,
                     backgroundImage: `url('/hero-donor.png')`,
                     backgroundSize: 'cover', backgroundPosition: 'center center',
                 }}>
-                    {/* Red tint overlay — kept light so the photo shows through */}
+                    {/* Red tint overlay � kept light so the photo shows through */}
                     <div style={{ position: 'absolute', inset: 0, background: 'linear-gradient(100deg, rgba(160,0,0,0.55) 0%, rgba(80,0,0,0.30) 100%)' }} />
                 </div>
 
@@ -435,7 +435,7 @@ export default function HomePage({ onDonate, onRequest, onLogin }) {
                             </button>
                         </div>
                     </div>
-                    {/* Right — stat cards float over the image */}
+                    {/* Right � stat cards float over the image */}
                     <div style={{ display: 'flex', flexDirection: 'column', gap: '14px', alignItems: 'flex-end', paddingRight: '28px', paddingTop: '10px' }}>
                         {[
                             { value: '1,247', label: 'Registered Donors', icon: <svg width="20" height="20" fill="none" stroke="#fff" strokeWidth="2" viewBox="0 0 24 24"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg> },
@@ -468,7 +468,7 @@ export default function HomePage({ onDonate, onRequest, onLogin }) {
             </section>
 
 
-            {/* ── RED STATS BAR ── */}
+            {/* -- RED STATS BAR -- */}
             <section style={{ background: 'linear-gradient(135deg,#CC2222,#990000)', padding: '36px 5vw' }}>
                 <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(4,1fr)', gap: '0', textAlign: 'center' }}>
                     {[
@@ -487,7 +487,7 @@ export default function HomePage({ onDonate, onRequest, onLogin }) {
                 </div>
             </section>
 
-            {/* ── FEATURE CARDS ── */}
+            {/* -- FEATURE CARDS -- */}
             <section id="about" style={{ padding: '80px 5vw', background: darkMode ? '#2C2C2E' : '#F7F7F9' }}>
                 <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
                     <div style={{ textAlign: 'center', marginBottom: '52px' }}>
@@ -523,10 +523,10 @@ export default function HomePage({ onDonate, onRequest, onLogin }) {
                 </div>
             </section>
 
-            {/* ── TESTIMONIALS ── */}
+            {/* -- TESTIMONIALS -- */}
             <TestimonialsSection />
 
-            {/* ── COMMITTED TO QUALITY ── */}
+            {/* -- COMMITTED TO QUALITY -- */}
             <section style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', minHeight: '420px' }}>
                 {/* Left - grayscale visual side */}
                 <div style={{ background: 'linear-gradient(135deg, #2C2C2E 0%, #1D1D1F 100%)', display: 'flex', alignItems: 'center', justifyContent: 'center', padding: '60px 40px', position: 'relative', overflow: 'hidden' }}>
@@ -583,7 +583,7 @@ export default function HomePage({ onDonate, onRequest, onLogin }) {
                 </div>
             </section>
 
-            {/* ── HOW IT WORKS ── */}
+            {/* -- HOW IT WORKS -- */}
             <section id="how" style={{ padding: '80px 5vw', background: '#fff' }}>
                 <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
                     <div style={{ textAlign: 'center', marginBottom: '52px' }}>
@@ -608,7 +608,7 @@ export default function HomePage({ onDonate, onRequest, onLogin }) {
                 </div>
             </section>
 
-            {/* ── BLOOD AVAILABILITY ── */}
+            {/* -- BLOOD AVAILABILITY -- */}
             <section id="blood" style={{ padding: '80px 5vw', background: '#F7F7F9' }}>
                 <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
                     <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '40px', flexWrap: 'wrap', gap: '16px' }}>
@@ -660,7 +660,7 @@ export default function HomePage({ onDonate, onRequest, onLogin }) {
                 </div>
             </section>
 
-            {/* ── ABOUT SECTION ── */}
+            {/* -- ABOUT SECTION -- */}
             <section id="about" style={{ padding: '80px 5vw', background: '#fff' }}>
                 <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '60px', alignItems: 'center' }}>
                     <div>
@@ -707,7 +707,7 @@ export default function HomePage({ onDonate, onRequest, onLogin }) {
                 </div>
             </section>
 
-            {/* ── CONTACT SECTION ── */}
+            {/* -- CONTACT SECTION -- */}
             <section id="contact" style={{ padding: '80px 5vw', background: '#F7F7F9' }}>
                 <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
                     <div style={{ textAlign: 'center', marginBottom: '52px' }}>
@@ -789,7 +789,7 @@ export default function HomePage({ onDonate, onRequest, onLogin }) {
                 </div>
             </section>
 
-            {/* ── DONOR PORTAL TEASER ── */}
+            {/* -- DONOR PORTAL TEASER -- */}
             <section style={{ padding: '100px 5vw', background: darkMode ? '#1D1D1F' : '#fff', borderTop: '1px solid #E8E8ED', borderBottom: '1px solid #E8E8ED' }}>
                 <div style={{ maxWidth: '1200px', margin: '0 auto', display: 'grid', gridTemplateColumns: '1.2fr 1fr', gap: '80px', alignItems: 'center' }}>
                     <div>
@@ -800,7 +800,7 @@ export default function HomePage({ onDonate, onRequest, onLogin }) {
                             One Dashboard.<br /><span style={{ color: '#FF3B30' }}>End-to-End Care.</span>
                         </h2>
                         <p style={{ fontSize: '18px', color: '#6E6E73', lineHeight: 1.7, marginBottom: '40px', maxWidth: '480px' }}>
-                            Soon, donors and patients will have their own dedicated portals. Track your donations, view test results, manage thalassaemia transfusions, and earn rewards—all in one place.
+                            Soon, donors and patients will have their own dedicated portals. Track your donations, view test results, manage thalassaemia transfusions, and earn rewards�all in one place.
                         </p>
                         <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '24px', marginBottom: '48px' }}>
                             {[
@@ -859,7 +859,7 @@ export default function HomePage({ onDonate, onRequest, onLogin }) {
                 </div>
             </section>
 
-            {/* ── FAQ / EDUCATIONAL SECTION ── */}
+            {/* -- FAQ / EDUCATIONAL SECTION -- */}
             <section style={{ padding: '80px 5vw', background: darkMode ? '#2C2C2E' : '#F7F7F9' }}>
                 <div style={{ maxWidth: '900px', margin: '0 auto' }}>
                     <div style={{ textAlign: 'center', marginBottom: '52px' }}>
@@ -889,7 +889,7 @@ export default function HomePage({ onDonate, onRequest, onLogin }) {
                 </div>
             </section>
 
-            {/* ── FOOTER ── */}
+            {/* -- FOOTER -- */}
             <footer style={{ background: '#1D1D1F', padding: '48px 5vw 28px', color: '#fff' }}>
                 <div style={{ maxWidth: '1200px', margin: '0 auto' }}>
                     <div style={{ display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: '40px', marginBottom: '40px' }}>
@@ -926,7 +926,7 @@ export default function HomePage({ onDonate, onRequest, onLogin }) {
                         {[
                             { title: 'Services', links: ['Donate Blood', 'Request Blood', 'TTI Screening', 'Thalassemia Care', 'Blood Camps'] },
                             { title: 'Information', links: ['Why Donate?', 'Eligibility', 'Blood Types', 'FAQs', 'News & Blog'] },
-                            { title: 'Contact', links: ['+92 021 111-BLOOD', 'info@lifeflow.pk', 'JPMC, Karachi', 'Mon–Sun: 24/7', 'Emergency: 1122'] },
+                            { title: 'Contact', links: ['+92 021 111-BLOOD', 'info@lifeflow.pk', 'JPMC, Karachi', 'Mon�Sun: 24/7', 'Emergency: 1122'] },
                         ].map(col => (
                             <div key={col.title}>
                                 <div style={{ fontSize: '12px', fontWeight: 700, color: '#8E8E93', textTransform: 'uppercase', letterSpacing: '0.1em', marginBottom: '16px' }}>{col.title}</div>
@@ -941,7 +941,7 @@ export default function HomePage({ onDonate, onRequest, onLogin }) {
                         ))}
                     </div>
                     <div style={{ borderTop: '1px solid #2C2C2E', paddingTop: '24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: '12px' }}>
-                        <p style={{ fontSize: '13px', color: '#6E6E73' }}>© 2026 LifeFlow Blood Bank. All rights reserved. Thank you for supporting LifeFlow Blood Bank.</p>
+                        <p style={{ fontSize: '13px', color: '#6E6E73' }}>� 2026 LifeFlow Blood Bank. All rights reserved. Thank you for supporting LifeFlow Blood Bank.</p>
                         <div style={{ display: 'flex', gap: '20px' }}>
                             {['Privacy Policy', 'Terms of Service', 'Cookie Policy'].map(l => (
                                 <a key={l} href="#" style={{ fontSize: '13px', color: '#6E6E73', textDecoration: 'none', transition: 'color 0.15s' }}

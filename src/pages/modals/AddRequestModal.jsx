@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { BLOOD_GROUPS } from './data';
-import { Icons } from './icons';
+import { BLOOD_GROUPS } from '../../lib/data';
+import { Icons } from '../../lib/icons';
 
 const HOSPITALS = [
     'Jinnah Hospital', 'Aga Khan University Hospital', 'Civil Hospital Karachi',

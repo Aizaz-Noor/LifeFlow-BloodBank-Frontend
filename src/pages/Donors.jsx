@@ -1,7 +1,7 @@
-﻿import { useState, useMemo } from 'react';
-import { DONORS as INITIAL_DONORS, BLOOD_INVENTORY, donorEligible, daysSinceDonation } from './data';
-import AddDonorModal from './AddDonorModal';
-import { Icons } from './icons';
+import { useState, useMemo } from 'react';
+import { DONORS as INITIAL_DONORS, BLOOD_INVENTORY, donorEligible, daysSinceDonation } from '../lib/data';
+import AddDonorModal from './modals/AddDonorModal';
+import { Icons } from '../lib/icons';
 
 export default function DonorsPage() {
     const [donors, setDonors] = useState(INITIAL_DONORS);
@@ -64,14 +64,14 @@ export default function DonorsPage() {
                 <AddDonorModal onClose={() => setShowModal(false)} onAdded={d => setDonors(prev => [d, ...prev])} />
             )}
 
-            {/* ── DONOR DETAIL DRAWER ── */}
+            {/* -- DONOR DETAIL DRAWER -- */}
             {selectedDonor && (
                 <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.35)', backdropFilter: 'blur(4px)', zIndex: 100, display: 'flex', alignItems: 'flex-end', justifyContent: 'flex-end' }}
                     onClick={e => e.target === e.currentTarget && setSelectedDonor(null)}>
                     <div style={{ background: 'var(--bg-card)', width: '380px', height: '100vh', padding: '28px', overflowY: 'auto', boxShadow: '-8px 0 32px rgba(0,0,0,0.12)', animation: 'slideInRight 0.3s cubic-bezier(0.4,0,0.2,1) both' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
                             <h3 style={{ fontSize: '18px', fontWeight: 800, color: 'var(--text-primary)' }}>Donor Profile</h3>
-                            <button onClick={() => setSelectedDonor(null)} style={{ width: '32px', height: '32px', borderRadius: '8px', border: 'none', background: 'var(--bg-hover)', cursor: 'pointer', fontSize: '18px', color: 'var(--text-secondary)' }}>×</button>
+                            <button onClick={() => setSelectedDonor(null)} style={{ width: '32px', height: '32px', borderRadius: '8px', border: 'none', background: 'var(--bg-hover)', cursor: 'pointer', fontSize: '18px', color: 'var(--text-secondary)' }}>�</button>
                         </div>
                         {/* Avatar */}
                         <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', marginBottom: '24px', padding: '20px', background: 'var(--bg-hover)', borderRadius: '16px' }}>
@@ -167,15 +167,15 @@ export default function DonorsPage() {
                 </div>
             )}
 
-            {/* ── HEADER ── */}
+            {/* -- HEADER -- */}
             <div className="anim-fade-up" style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
                 <div>
                     <h1 style={{ fontSize: '28px', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>Donor Management</h1>
                     <div style={{ display: 'flex', gap: '10px', marginTop: '8px', flexWrap: 'wrap' }}>
                         <span style={{ fontSize: '13px', color: 'var(--text-secondary)' }}>{donors.length} total donors</span>
-                        <span style={{ color: 'var(--border)' }}>·</span>
+                        <span style={{ color: 'var(--border)' }}>�</span>
                         <span style={{ fontSize: '13px', color: 'var(--green)', fontWeight: 600 }}>{eligibleCount} eligible</span>
-                        <span style={{ color: 'var(--border)' }}>·</span>
+                        <span style={{ color: 'var(--border)' }}>�</span>
                         <span style={{ fontSize: '13px', color: '#9B59B6', fontWeight: 600 }}>{appointments.length} appointments</span>
                     </div>
                 </div>
@@ -200,14 +200,14 @@ export default function DonorsPage() {
                 </div>
             </div>
 
-            {/* ── SEARCH & FILTERS ── */}
+            {/* -- SEARCH & FILTERS -- */}
             <div className="anim-fade-up" style={{ display: 'flex', gap: '12px', flexWrap: 'wrap', animationDelay: '60ms' }}>
                 <div style={{ position: 'relative', flex: 1, minWidth: '240px' }}>
                     <svg style={{ position: 'absolute', left: '14px', top: '50%', transform: 'translateY(-50%)', color: searchFocus ? 'var(--red)' : 'var(--text-tertiary)', transition: 'color 0.15s' }}
                         width="16" height="16" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                         <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
                     </svg>
-                    <input type="text" placeholder="Search by name, city or phone…" value={search}
+                    <input type="text" placeholder="Search by name, city or phone�" value={search}
                         onChange={e => setSearch(e.target.value)}
                         onFocus={() => setSearchFocus(true)} onBlur={() => setSearchFocus(false)}
                         style={{
@@ -234,13 +234,13 @@ export default function DonorsPage() {
                 </select>
             </div>
 
-            {/* ── APPOINTMENTS VIEW ── */}
+            {/* -- APPOINTMENTS VIEW -- */}
             {view === 'appointments' && (
                 <div className="anim-fade-up" style={{ background: 'var(--bg-card)', borderRadius: '16px', border: '1px solid var(--border)', overflow: 'hidden', boxShadow: 'var(--shadow-sm)', animationDelay: '80ms' }}>
                     <div style={{ padding: '20px 24px', borderBottom: '1px solid var(--border)', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                         <div>
                             <h2 style={{ fontSize: '17px', fontWeight: 700, color: 'var(--text-primary)' }}>Upcoming Donor Appointments</h2>
-                            <p style={{ fontSize: '13px', color: 'var(--text-secondary)', marginTop: '3px' }}>Scheduled next-donation dates · click a donor row and use "Schedule Appointment"</p>
+                            <p style={{ fontSize: '13px', color: 'var(--text-secondary)', marginTop: '3px' }}>Scheduled next-donation dates � click a donor row and use "Schedule Appointment"</p>
                         </div>
                         <span style={{ padding: '4px 12px', borderRadius: '99px', background: '#F5F0FF', color: '#9B59B6', fontSize: '13px', fontWeight: 700 }}>{upcomingAppts.length} scheduled</span>
                     </div>
@@ -274,7 +274,7 @@ export default function DonorsPage() {
                 </div>
             )}
 
-            {/* ── LIST VIEW ── */}
+            {/* -- LIST VIEW -- */}
             {view === 'list' && (
                 <div className="anim-fade-up" style={{ background: 'var(--bg-card)', borderRadius: '16px', border: '1px solid var(--border)', boxShadow: 'var(--shadow-sm)', overflow: 'hidden', animationDelay: '120ms' }}>
                     <div style={{ overflowX: 'auto' }}>
@@ -361,20 +361,20 @@ export default function DonorsPage() {
                     </div>
                     {filtered.length > 0 && (
                         <div style={{ padding: '12px 20px', borderTop: '1px solid var(--border)', background: 'var(--bg-hover)', fontSize: '13px', color: 'var(--text-tertiary)', fontWeight: 500 }}>
-                            Showing {filtered.length} of {donors.length} donors · Click row to view profile & schedule appointment
+                            Showing {filtered.length} of {donors.length} donors � Click row to view profile & schedule appointment
                         </div>
                     )}
                 </div>
             )}
 
-            {/* ── APPOINTMENT FORM MODAL ── */}
+            {/* -- APPOINTMENT FORM MODAL -- */}
             {showApptForm && selectedDonor && (
                 <div style={{ position: 'fixed', inset: 0, background: 'rgba(0,0,0,0.4)', backdropFilter: 'blur(4px)', zIndex: 200, display: 'flex', alignItems: 'center', justifyContent: 'center' }}
                     onClick={e => e.target === e.currentTarget && setShowApptForm(false)}>
                     <div style={{ background: 'var(--bg-card)', borderRadius: '20px', padding: '28px', width: '380px', boxShadow: 'var(--shadow-lg)', animation: 'scaleIn 0.25s cubic-bezier(0.34,1.56,0.64,1) both' }}>
                         <h3 style={{ fontSize: '17px', fontWeight: 800, color: 'var(--text-primary)', marginBottom: '4px' }}>Schedule Appointment</h3>
                         <p style={{ fontSize: '13px', color: 'var(--text-secondary)', marginBottom: '20px' }}>
-                            {selectedDonor.name} · <Icons.Drop /> {selectedDonor.bloodGroup}
+                            {selectedDonor.name} � <Icons.Drop /> {selectedDonor.bloodGroup}
                         </p>
                         <div style={{ display: 'flex', gap: '10px', marginBottom: '12px' }}>
                             <div style={{ flex: 1 }}>

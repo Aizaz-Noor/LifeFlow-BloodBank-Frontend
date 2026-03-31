@@ -1,10 +1,10 @@
-ï»¿import { useState } from 'react';
-import { THALASSEMIA_PATIENTS, BLOOD_GROUPS, PK_CITIES, addThalPatient } from './data';
+import { useState } from 'react';
+import { THALASSEMIA_PATIENTS, BLOOD_GROUPS, PK_CITIES, addThalPatient } from '../lib/data';
 
 const LBL = { fontSize: '12px', fontWeight: 600, color: 'var(--text-secondary)', marginBottom: '5px', display: 'block' };
 const FIELD = { width: '100%', padding: '10px 13px', fontSize: '14px', border: '1.5px solid var(--border)', borderRadius: '10px', background: 'var(--bg-card)', color: 'var(--text-primary)', transition: 'all 0.15s', outline: 'none', fontFamily: 'Inter, sans-serif' };
 const FREQUENCIES = ['Every 2 weeks', 'Every 3 weeks', 'Monthly', 'Every 6 weeks'];
-import { Icons } from './icons';
+import { Icons } from '../lib/icons';
 
 function daysBetween(a, b) {
     return Math.ceil((new Date(b) - new Date(a)) / 86400000);
@@ -22,7 +22,7 @@ function AddPatientModal({ onClose, onAdded }) {
     const validate = () => {
         const e = {};
         if (!form.name.trim()) e.name = 'Patient name required';
-        if (!form.age || form.age < 1 || form.age > 99) e.age = 'Age must be 1â€“99';
+        if (!form.age || form.age < 1 || form.age > 99) e.age = 'Age must be 1–99';
         if (!form.guardian.trim()) e.guardian = 'Guardian name required';
         if (!/^0\d{3}-\d{7}$/.test(form.phone)) e.phone = 'Format: 0XXX-XXXXXXX';
         return e;
@@ -55,7 +55,7 @@ function AddPatientModal({ onClose, onAdded }) {
                     </div>
                     <button onClick={onClose} aria-label="Close modal" style={{ width: '32px', height: '32px', borderRadius: '8px', border: 'none', background: 'var(--bg-hover)', color: 'var(--text-secondary)', cursor: 'pointer', fontSize: '18px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
                         onMouseEnter={e => { e.currentTarget.style.background = 'var(--red)'; e.currentTarget.style.color = '#fff'; }}
-                        onMouseLeave={e => { e.currentTarget.style.background = 'var(--bg-hover)'; e.currentTarget.style.color = 'var(--text-secondary)'; }}>Ã—</button>
+                        onMouseLeave={e => { e.currentTarget.style.background = 'var(--bg-hover)'; e.currentTarget.style.color = 'var(--text-secondary)'; }}>×</button>
                 </div>
                 <form onSubmit={handleSubmit} style={{ padding: '22px 28px', display: 'flex', flexDirection: 'column', gap: '15px' }}>
                     <div>
@@ -117,7 +117,7 @@ function AddPatientModal({ onClose, onAdded }) {
                         <button type="button" onClick={onClose} style={{ padding: '10px 22px', borderRadius: '10px', border: '1.5px solid var(--border)', background: 'transparent', fontSize: '14px', fontWeight: 600, color: 'var(--text-secondary)', cursor: 'pointer', transition: 'all 0.15s' }}
                             onMouseEnter={e => e.currentTarget.style.background = 'var(--bg-hover)'} onMouseLeave={e => e.currentTarget.style.background = 'transparent'}>Cancel</button>
                         <button type="submit" disabled={saving} style={{ padding: '10px 28px', borderRadius: '10px', border: 'none', background: saving ? 'var(--text-tertiary)' : 'linear-gradient(135deg,#FF3B30,#C0392B)', color: '#fff', fontSize: '14px', fontWeight: 700, cursor: saving ? 'not-allowed' : 'pointer', boxShadow: saving ? 'none' : '0 3px 12px rgba(255,59,48,0.3)', transition: 'all 0.15s' }}>
-                            {saving ? 'Registeringâ€¦' : 'Register Patient'}
+                            {saving ? 'Registering…' : 'Register Patient'}
                         </button>
                     </div>
                 </form>
@@ -156,7 +156,7 @@ export default function ThalassemiaPage() {
                     <div style={{ background: 'var(--bg-sidebar)', width: '380px', height: '100vh', padding: '28px', overflowY: 'auto', boxShadow: 'var(--shadow-lg)', animation: 'slideInRight 0.3s cubic-bezier(0.4,0,0.2,1) both', borderLeft: '1px solid var(--border)' }}>
                         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px' }}>
                             <h3 style={{ fontSize: '18px', fontWeight: 800, color: 'var(--text-primary)' }}>Patient Detail</h3>
-                            <button onClick={() => setSelected(null)} aria-label="Close drawer" style={{ width: '32px', height: '32px', border: 'none', background: 'var(--bg-hover)', borderRadius: '8px', cursor: 'pointer', fontSize: '18px', color: 'var(--text-secondary)' }}>Ã—</button>
+                            <button onClick={() => setSelected(null)} aria-label="Close drawer" style={{ width: '32px', height: '32px', border: 'none', background: 'var(--bg-hover)', borderRadius: '8px', cursor: 'pointer', fontSize: '18px', color: 'var(--text-secondary)' }}>×</button>
                         </div>
                         {/* Patient card */}
                         <div style={{ background: 'var(--bg-card)', borderRadius: '16px', padding: '20px', textAlign: 'center', marginBottom: '20px', border: '1px solid var(--border)' }}>
@@ -164,7 +164,7 @@ export default function ThalassemiaPage() {
                                 {selected.name.split(' ').map(n => n[0]).join('')}
                             </div>
                             <h4 style={{ fontSize: '17px', fontWeight: 800, color: 'var(--text-primary)' }}>{selected.name}</h4>
-                            <p style={{ fontSize: '13px', color: 'var(--text-secondary)', marginTop: '4px' }}>{selected.id} Â· {selected.bloodGroup} Â· Age {selected.age}</p>
+                            <p style={{ fontSize: '13px', color: 'var(--text-secondary)', marginTop: '4px' }}>{selected.id} · {selected.bloodGroup} · Age {selected.age}</p>
                             <p style={{ fontSize: '12px', color: 'var(--text-tertiary)', marginTop: '4px' }}>{selected.city}</p>
                         </div>
                         {[
@@ -237,7 +237,7 @@ export default function ThalassemiaPage() {
                 {[
                     { label: 'Total Patients', value: patients.length, color: 'var(--text-primary)' },
                     { label: 'Overdue', value: overdue, color: 'var(--red)' },
-                    { label: 'Due â‰¤ 5 Days', value: dueSoon, color: 'var(--orange)' },
+                    { label: 'Due = 5 Days', value: dueSoon, color: 'var(--orange)' },
                     { label: 'Active', value: patients.filter(p => p.status === 'Active').length, color: 'var(--green)' },
                     { label: 'Total Units Given', value: patients.reduce((s, p) => s + p.totalUnitsLifetime, 0), color: 'var(--blue)' },
                 ].map((s, i) => (
@@ -278,7 +278,7 @@ export default function ThalassemiaPage() {
                                         <td style={{ padding: '14px 18px' }}>
                                             <div>
                                                 <p style={{ fontSize: '14px', fontWeight: 600, color: 'var(--text-primary)' }}>{p.name}</p>
-                                                <p style={{ fontSize: '12px', color: 'var(--text-tertiary)' }}>{p.id} Â· Age {p.age}</p>
+                                                <p style={{ fontSize: '12px', color: 'var(--text-tertiary)' }}>{p.id} · Age {p.age}</p>
                                             </div>
                                         </td>
                                         <td style={{ padding: '14px 18px' }}>
@@ -311,7 +311,7 @@ export default function ThalassemiaPage() {
                     </table>
                 </div>
                 <div style={{ padding: '11px 18px', borderTop: '1px solid var(--border)', background: 'var(--bg-hover)', fontSize: '12px', color: 'var(--text-tertiary)', fontWeight: 500 }}>
-                    {patients.length} registered patients Â· Click a row to schedule transfusion
+                    {patients.length} registered patients · Click a row to schedule transfusion
                 </div>
             </div>
 
@@ -321,8 +321,8 @@ export default function ThalassemiaPage() {
                 <div>
                     <p style={{ fontSize: '14px', fontWeight: 700, color: 'var(--red)', marginBottom: '4px' }}>Pakistan Thalassemia Crisis</p>
                     <p style={{ fontSize: '13px', color: 'var(--text-secondary)', lineHeight: 1.6 }}>
-                        Pakistan has <strong>100,000+ thalassemia major patients</strong> with <strong>5,000â€“9,000 new cases per year</strong> - one of the highest rates globally.
-                        Each patient requires 2â€“4 units every 2â€“4 weeks for life. Rural patients in Balochistan and KPK often travel 100+ km for treatment.
+                        Pakistan has <strong>100,000+ thalassemia major patients</strong> with <strong>5,000–9,000 new cases per year</strong> - one of the highest rates globally.
+                        Each patient requires 2–4 units every 2–4 weeks for life. Rural patients in Balochistan and KPK often travel 100+ km for treatment.
                         High-risk factor: consanguineous marriages (cousin marriages) account for ~60% of Pakistani unions.
                     </p>
                 </div>

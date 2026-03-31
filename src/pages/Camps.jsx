@@ -1,7 +1,7 @@
 import { useState } from 'react';
-import { DONATION_CAMPS } from './data';
-import AddCampModal from './AddCampModal';
-import { Icons } from './icons';
+import { DONATION_CAMPS } from '../lib/data';
+import AddCampModal from './modals/AddCampModal';
+import { Icons } from '../lib/icons';
 
 export default function CampsPage() {
     const [camps, setCamps] = useState(DONATION_CAMPS);

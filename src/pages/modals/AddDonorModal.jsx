@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { BLOOD_GROUPS, PK_CITIES, addDonor, donorEligible } from './data';
-import { Icons } from './icons';
+import { BLOOD_GROUPS, PK_CITIES, addDonor, donorEligible } from '../../lib/data';
+import { Icons } from '../../lib/icons';
 
 const FIELD_STYLE = {
     width: '100%', padding: '10px 13px', fontSize: '14px', fontWeight: 400,
