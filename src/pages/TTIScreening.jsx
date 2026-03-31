@@ -1,6 +1,6 @@
-ï»¿import { useState } from 'react';
-import { DONORS } from './data';
-import { Icons } from './icons';
+import { useState } from 'react';
+import { DONORS } from '../lib/data';
+import { Icons } from '../lib/icons';
 
 const TTI_TESTS = [
     { key: 'hbv', label: 'Hepatitis B (HBV)', critical: true },
@@ -71,7 +71,7 @@ export default function TTIScreeningPage() {
                     <div>
                         <p style={{ fontSize: '14px', fontWeight: 700, color: 'var(--red)' }}>{flaggedDonors.length} Donor{flaggedDonors.length > 1 ? 's' : ''} Flagged - Failed TTI Screening</p>
                         <p style={{ fontSize: '13px', color: 'var(--red)', opacity: 0.8, marginTop: '3px' }}>
-                            {flaggedDonors.map(d => `${d.name} (${d.bloodGroup})`).join(' Â· ')} - blood units from these donors must be quarantined
+                            {flaggedDonors.map(d => `${d.name} (${d.bloodGroup})`).join(' · ')} - blood units from these donors must be quarantined
                         </p>
                     </div>
                 </div>
@@ -99,7 +99,7 @@ export default function TTIScreeningPage() {
                     <div style={{ position: 'absolute', left: '13px', top: '50%', transform: 'translateY(-50%)', color: searchFocus ? 'var(--red)' : 'var(--text-tertiary)' }}>
                         <Icons.Search size={15} />
                     </div>
-                    <input type="text" placeholder="Search donorâ€¦" value={search} onChange={e => setSearch(e.target.value)}
+                    <input type="text" placeholder="Search donor…" value={search} onChange={e => setSearch(e.target.value)}
                         onFocus={() => setSearchFocus(true)} onBlur={() => setSearchFocus(false)}
                         style={{ width: '100%', padding: '10px 14px 10px 38px', fontSize: '14px', border: `1.5px solid ${searchFocus ? 'var(--red)' : 'var(--border)'}`, borderRadius: '10px', background: 'var(--bg-card)', color: 'var(--text-primary)', outline: 'none', boxShadow: searchFocus ? '0 0 0 3px var(--red-bg)' : 'none', transition: 'all 0.15s' }} />
                 </div>
@@ -142,7 +142,7 @@ export default function TTIScreeningPage() {
                                         onMouseLeave={e => e.currentTarget.style.background = st === 'flagged' ? 'var(--red-bg)' : 'transparent'}>
                                         <td style={{ padding: '13px 20px' }}>
                                             <p style={{ fontSize: '14px', fontWeight: 600, color: 'var(--text-primary)' }}>{d.name}</p>
-                                            <p style={{ fontSize: '12px', color: 'var(--text-tertiary)' }}>{d.bloodGroup} Â· {d.city}</p>
+                                            <p style={{ fontSize: '12px', color: 'var(--text-tertiary)' }}>{d.bloodGroup} · {d.city}</p>
                                         </td>
                                         <td style={{ padding: '13px 20px' }}>
                                             <span style={{ padding: '3px 9px', borderRadius: '99px', fontSize: '12px', fontWeight: 700, background: dtBg[d.donorType] || 'var(--bg-hover)', color: dtColor[d.donorType] || 'var(--text-secondary)' }}>
@@ -168,7 +168,7 @@ export default function TTIScreeningPage() {
                                         })}
                                         <td style={{ textAlign: 'center', padding: '13px 14px' }}>
                                             <span style={{ padding: '4px 10px', borderRadius: '99px', fontSize: '12px', fontWeight: 700, background: stBg, color: stColor }}>
-                                                {st === 'cleared' ? <><Icons.Check size={12} /> Cleared</> : st === 'flagged' ? <><Icons.Close size={12} /> Flagged</> : 'â€¦ Pending'}
+                                                {st === 'cleared' ? <><Icons.Check size={12} /> Cleared</> : st === 'flagged' ? <><Icons.Close size={12} /> Flagged</> : '… Pending'}
                                             </span>
                                         </td>
                                     </tr>
@@ -178,7 +178,7 @@ export default function TTIScreeningPage() {
                     </table>
                 </div>
                 <div style={{ padding: '11px 20px', borderTop: '1px solid var(--border)', background: 'var(--bg-hover)', fontSize: '12px', color: 'var(--text-tertiary)' }}>
-                    Showing {filtered.length} of {donors.length} donors Â· Click pass/fail buttons to toggle test result â€¢ Flagged donors' blood must be quarantined per WHO guidelines
+                    Showing {filtered.length} of {donors.length} donors · Click pass/fail buttons to toggle test result • Flagged donors' blood must be quarantined per WHO guidelines
                 </div>
             </div>
 
@@ -190,7 +190,7 @@ export default function TTIScreeningPage() {
                     <p style={{ fontSize: '13px', color: 'var(--text-secondary)', lineHeight: 1.7 }}>
                         Pakistan has one of the world's highest <strong>Hepatitis C (HCV) prevalence rates (~5%)</strong> and significant <strong>Hepatitis B (HBV)</strong>.
                         Many blood banks still use rapid test kits rather than ELISA methods, creating false-negative risks.
-                        <strong> Replacement donors</strong> (family members donating under pressure) are statistically 3.5Ã— more likely to carry TTIs than voluntary donors.
+                        <strong> Replacement donors</strong> (family members donating under pressure) are statistically 3.5× more likely to carry TTIs than voluntary donors.
                         Malaria screening is critical in Balochistan and KPK border areas.
                     </p>
                 </div>

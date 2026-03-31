@@ -1,5 +1,5 @@
-﻿import { BLOOD_INVENTORY, RECENT_ACTIVITY, daysUntilExpiry } from './data';
-import { Icons } from './icons';
+import { BLOOD_INVENTORY, RECENT_ACTIVITY, daysUntilExpiry } from '../lib/data';
+import { Icons } from '../lib/icons';
 
 
 
@@ -82,7 +82,7 @@ export default function DashboardPage() {
                             {expiryAlerts.map(b => {
                                 const d = daysUntilExpiry(b.expiryDate);
                                 return `${b.group} (${b.units} units - ${d <= 0 ? 'EXPIRED' : d === 1 ? 'expires today' : `expires in ${d} days`})`;
-                            }).join(' · ')}
+                            }).join(' � ')}
                         </p>
                     </div>
                 </div>
@@ -149,7 +149,7 @@ export default function DashboardPage() {
                     <table style={{ borderCollapse: 'collapse', fontSize: '13px', width: '100%' }}>
                         <thead>
                             <tr>
-                                <th style={{ padding: '8px 14px', textAlign: 'left', fontSize: '11px', fontWeight: 700, color: 'var(--text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.08em', background: 'var(--bg-hover)', borderRadius: '8px 0 0 8px' }}>Donor ↓ / Recipient →</th>
+                                <th style={{ padding: '8px 14px', textAlign: 'left', fontSize: '11px', fontWeight: 700, color: 'var(--text-tertiary)', textTransform: 'uppercase', letterSpacing: '0.08em', background: 'var(--bg-hover)', borderRadius: '8px 0 0 8px' }}>Donor ? / Recipient ?</th>
                                 {['A+', 'A-', 'B+', 'B-', 'O+', 'O-', 'AB+', 'AB-'].map(g => (
                                     <th key={g} style={{ padding: '8px 14px', textAlign: 'center', fontSize: '12px', fontWeight: 800, color: 'var(--text-primary)', background: 'var(--bg-hover)' }}>{g}</th>
                                 ))}
@@ -178,7 +178,7 @@ export default function DashboardPage() {
                                                     ? <span style={{ display: 'inline-flex', alignItems: 'center', justifyContent: 'center', width: '22px', height: '22px', borderRadius: '50%', background: 'var(--green-bg)', color: 'var(--green)', fontSize: '13px' }}>
                                                         <Icons.Check size={14} />
                                                     </span>
-                                                    : <span style={{ display: 'inline-block', width: '22px', height: '22px', borderRadius: '50%', background: 'var(--bg-hover)', color: 'var(--text-tertiary)', fontSize: '11px', lineHeight: '22px' }}>–</span>
+                                                    : <span style={{ display: 'inline-block', width: '22px', height: '22px', borderRadius: '50%', background: 'var(--bg-hover)', color: 'var(--text-tertiary)', fontSize: '11px', lineHeight: '22px' }}>�</span>
                                                 }
                                             </td>
                                         );

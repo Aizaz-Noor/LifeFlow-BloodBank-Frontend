@@ -1,7 +1,7 @@
-﻿import { useState, useMemo } from 'react';
-import { BLOOD_REQUESTS, BLOOD_INVENTORY, DONORS } from './data';
-import AddRequestModal from './AddRequestModal';
-import { Icons } from './icons';
+import { useState, useMemo } from 'react';
+import { BLOOD_REQUESTS, BLOOD_INVENTORY, DONORS } from '../lib/data';
+import AddRequestModal from './modals/AddRequestModal';
+import { Icons } from '../lib/icons';
 
 /* Blood compatibility rules - same group always compatible, plus universal donors */
 const COMPATIBLE_DONORS = {
@@ -48,7 +48,7 @@ export default function RequestsPage() {
         return { bg: 'var(--bg-hover)', color: 'var(--text-tertiary)', dot: 'var(--text-tertiary)' };
     };
 
-    /* ── Cross-Match Data ── */
+    /* -- Cross-Match Data -- */
     const compatibleGroups = COMPATIBLE_DONORS[cmGroup] || [];
     const compatibleDonors = DONORS.filter(d =>
         compatibleGroups.includes(d.bloodGroup) &&
@@ -66,7 +66,7 @@ export default function RequestsPage() {
                 <AddRequestModal onClose={() => setShowModal(false)} onAdded={r => setRequests(prev => [r, ...prev])} />
             )}
 
-            {/* ── HEADER ── */}
+            {/* -- HEADER -- */}
             <div className="anim-fade-up" style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between', flexWrap: 'wrap', gap: '12px' }}>
                 <div>
                     <h1 style={{ fontSize: '28px', fontWeight: 800, color: 'var(--text-primary)', letterSpacing: '-0.02em' }}>Blood Requests</h1>
@@ -101,7 +101,7 @@ export default function RequestsPage() {
                 </div>
             </div>
 
-            {/* ── CROSS-MATCH LOOKUP PANEL ── */}
+            {/* -- CROSS-MATCH LOOKUP PANEL -- */}
             {showCrossMatch && (
                 <div className="anim-fade-up" style={{ background: 'var(--bg-card)', borderRadius: '16px', border: '1.5px solid var(--blue)', boxShadow: '0 4px 20px rgba(0,122,255,0.1)', padding: '24px', animationDuration: '0.3s' }}>
                     <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '20px', flexWrap: 'wrap', gap: '12px' }}>
@@ -161,7 +161,7 @@ export default function RequestsPage() {
                                     <div key={d.id} style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '10px 12px', background: 'var(--bg-card)', borderRadius: '10px', border: '1px solid var(--border)' }}>
                                         <div>
                                             <p style={{ fontSize: '13px', fontWeight: 600, color: 'var(--text-primary)' }}>{d.name}</p>
-                                            <p style={{ fontSize: '12px', color: 'var(--text-tertiary)', marginTop: '1px' }}>{d.city} · {d.phone}</p>
+                                            <p style={{ fontSize: '12px', color: 'var(--text-tertiary)', marginTop: '1px' }}>{d.city} � {d.phone}</p>
                                         </div>
                                         <span style={{ padding: '3px 9px', borderRadius: '99px', background: 'var(--red-bg)', color: 'var(--red)', fontSize: '12px', fontWeight: 700, display: 'flex', alignItems: 'center', gap: '4px' }}>
                                             <Icons.Drop /> {d.bloodGroup}
@@ -188,7 +188,7 @@ export default function RequestsPage() {
                 </div>
             )}
 
-            {/* ── EMPTY STATE ── */}
+            {/* -- EMPTY STATE -- */}
             {filtered.length === 0 && (
                 <div style={{ textAlign: 'center', padding: '60px', background: 'var(--bg-card)', borderRadius: '16px', border: '1px solid var(--border)' }}>
                     <div style={{ color: 'var(--text-tertiary)', marginBottom: '12px' }}><Icons.Requests /></div>
@@ -197,7 +197,7 @@ export default function RequestsPage() {
                 </div>
             )}
 
-            {/* ── CARDS GRID ── */}
+            {/* -- CARDS GRID -- */}
             <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill,minmax(400px,1fr))', gap: '16px' }}>
                 {filtered.map((req, i) => {
                     const isCrit = req.urgency === 'Critical';
@@ -280,7 +280,7 @@ export default function RequestsPage() {
                                             style={{ padding: '5px 10px', borderRadius: '8px', border: '1.5px solid var(--border)', background: 'transparent', fontSize: '12px', fontWeight: 600, color: 'var(--text-tertiary)', cursor: 'pointer', transition: 'all 0.15s' }}
                                             onMouseEnter={e => { e.currentTarget.style.background = 'var(--bg-hover)'; e.currentTarget.style.color = 'var(--text-secondary)'; }}
                                             onMouseLeave={e => { e.currentTarget.style.background = 'transparent'; e.currentTarget.style.color = 'var(--text-tertiary)'; }}>
-                                            ✕
+                                            ?
                                         </button>
                                     )}
                                 </div>

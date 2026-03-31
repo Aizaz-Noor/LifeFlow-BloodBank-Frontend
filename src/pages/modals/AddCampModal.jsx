@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { PK_CITIES } from './data';
-import { Icons } from './icons';
+import { PK_CITIES } from '../../lib/data';
+import { Icons } from '../../lib/icons';
 
 const FIELD = {
     width: '100%', padding: '10px 13px', fontSize: '14px',

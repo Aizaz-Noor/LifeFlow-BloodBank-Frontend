@@ -1,8 +1,8 @@
-﻿import { useState } from 'react';
-import { BLOOD_GROUPS } from './data';
-import { Icons } from './icons';
+import { useState } from 'react';
+import { BLOOD_GROUPS } from '../lib/data';
+import { Icons } from '../lib/icons';
 
-/* ─── shared wastage store ─── */
+/* --- shared wastage store --- */
 export let WASTAGE_LOG = [
     { id: 'W-001', bloodGroup: 'AB-', units: 3, reason: 'Expired', date: '2026-02-24', notes: 'Batch from Feb 3 expired today' },
     { id: 'W-002', bloodGroup: 'B-', units: 2, reason: 'Contaminated', date: '2026-02-22', notes: 'Failed sterility check' },
@@ -59,7 +59,7 @@ function DiscardModal({ onClose, onSaved }) {
                     </div>
                     <button onClick={onClose} aria-label="Close modal" style={{ width: '32px', height: '32px', borderRadius: '8px', border: 'none', background: 'var(--bg-hover)', color: 'var(--text-secondary)', cursor: 'pointer', fontSize: '18px', display: 'flex', alignItems: 'center', justifyContent: 'center' }}
                         onMouseEnter={e => { e.currentTarget.style.background = 'var(--red)'; e.currentTarget.style.color = '#fff'; }}
-                        onMouseLeave={e => { e.currentTarget.style.background = 'var(--bg-hover)'; e.currentTarget.style.color = 'var(--text-secondary)'; }}>×</button>
+                        onMouseLeave={e => { e.currentTarget.style.background = 'var(--bg-hover)'; e.currentTarget.style.color = 'var(--text-secondary)'; }}>�</button>
                 </div>
                 <form onSubmit={handleSubmit} style={{ padding: '20px 26px', display: 'flex', flexDirection: 'column', gap: '14px' }}>
                     <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: '12px' }}>
@@ -97,7 +97,7 @@ function DiscardModal({ onClose, onSaved }) {
                             onMouseEnter={e => e.currentTarget.style.background = 'var(--bg-hover)'}
                             onMouseLeave={e => e.currentTarget.style.background = 'transparent'}>Cancel</button>
                         <button type="submit" disabled={saving} style={{ padding: '10px 26px', borderRadius: '10px', border: 'none', background: saving ? 'var(--text-tertiary)' : 'linear-gradient(135deg,#FF3B30,#C0392B)', color: '#fff', fontSize: '14px', fontWeight: 700, cursor: saving ? 'not-allowed' : 'pointer', boxShadow: saving ? 'none' : '0 3px 12px rgba(255,59,48,0.3)', transition: 'all 0.15s' }}>
-                            {saving ? 'Logging…' : 'Log Discard'}
+                            {saving ? 'Logging�' : 'Log Discard'}
                         </button>
                     </div>
                 </form>
@@ -237,7 +237,7 @@ export default function WastagePage() {
                     </table>
                 </div>
                 <div style={{ padding: '11px 18px', borderTop: '1px solid var(--border)', background: 'var(--bg-hover)', fontSize: '12px', color: 'var(--text-tertiary)' }}>
-                    {filtered.length} records · Total {filtered.reduce((s, w) => s + w.units, 0)} units discarded · WHO mandates full discard audit trails
+                    {filtered.length} records � Total {filtered.reduce((s, w) => s + w.units, 0)} units discarded � WHO mandates full discard audit trails
                 </div>
             </div>
         </div>

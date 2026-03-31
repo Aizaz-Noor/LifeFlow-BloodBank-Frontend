@@ -1,23 +1,23 @@
-ï»¿import { useState } from 'react';
-import { Icons } from './icons';
+import { useState } from 'react';
+import { Icons } from '../lib/icons';
 
-/* â”€â”€â”€ Shared audit log store â”€â”€â”€ */
+/* --- Shared audit log store --- */
 export let AUDIT_LOG = [
     { id: 1, user: 'Admin', action: 'Donor Added', target: 'Nadia Akram (O-)', module: 'Donors', time: '2026-02-24 11:45', type: 'create' },
-    { id: 2, user: 'Admin', action: 'Request Approved', target: 'REQ-002 - A+ Ã— 2 units', module: 'Requests', time: '2026-02-24 11:30', type: 'update' },
+    { id: 2, user: 'Admin', action: 'Request Approved', target: 'REQ-002 - A+ × 2 units', module: 'Requests', time: '2026-02-24 11:30', type: 'update' },
     { id: 3, user: 'Admin', action: 'TTI Test Updated', target: 'Hassan Ali - HBV flagged', module: 'TTI', time: '2026-02-24 11:10', type: 'update' },
     { id: 4, user: 'Admin', action: 'Camp Scheduled', target: 'Ramzan Blood Camp (Mar 20)', module: 'Camps', time: '2026-02-24 10:55', type: 'create' },
-    { id: 5, user: 'Admin', action: 'Units Discarded', target: 'AB- Ã— 3 - Expired', module: 'Wastage', time: '2026-02-24 10:30', type: 'delete' },
-    { id: 6, user: 'Admin', action: 'Request Fulfilled', target: 'REQ-004 - AB+ Ã— 1 unit', module: 'Requests', time: '2026-02-23 16:00', type: 'update' },
+    { id: 5, user: 'Admin', action: 'Units Discarded', target: 'AB- × 3 - Expired', module: 'Wastage', time: '2026-02-24 10:30', type: 'delete' },
+    { id: 6, user: 'Admin', action: 'Request Fulfilled', target: 'REQ-004 - AB+ × 1 unit', module: 'Requests', time: '2026-02-23 16:00', type: 'update' },
     { id: 7, user: 'Admin', action: 'Donor Dismissed', target: 'REQ-007 - B- discharged', module: 'Requests', time: '2026-02-23 14:40', type: 'delete' },
     { id: 8, user: 'Admin', action: 'Thalassemia Patient', target: 'Hamza Baig registered', module: 'Thalassemia', time: '2026-02-23 13:20', type: 'create' },
-    { id: 9, user: 'Admin', action: 'Transfusion Logged', target: 'Zora Qasim - B+ Ã— 2 units', module: 'Thalassemia', time: '2026-02-23 11:00', type: 'update' },
-    { id: 10, user: 'Admin', action: 'Units Discarded', target: 'B- Ã— 2 - Contaminated', module: 'Wastage', time: '2026-02-22 15:15', type: 'delete' },
+    { id: 9, user: 'Admin', action: 'Transfusion Logged', target: 'Zora Qasim - B+ × 2 units', module: 'Thalassemia', time: '2026-02-23 11:00', type: 'update' },
+    { id: 10, user: 'Admin', action: 'Units Discarded', target: 'B- × 2 - Contaminated', module: 'Wastage', time: '2026-02-22 15:15', type: 'delete' },
     { id: 11, user: 'Admin', action: 'Volunteer Registered', target: 'NED University Drive', module: 'Camps', time: '2026-02-22 12:00', type: 'update' },
     { id: 12, user: 'Admin', action: 'Donor Added', target: 'Usman Raza (O+)', module: 'Donors', time: '2026-02-21 09:30', type: 'create' },
     { id: 13, user: 'Admin', action: 'Appointment Set', target: 'Ahmed Khan - Mar 16', module: 'Donors', time: '2026-02-20 14:00', type: 'create' },
-    { id: 14, user: 'Admin', action: 'Request Added', target: 'REQ-008 - O+ Ã— 3 (Critical)', module: 'Requests', time: '2026-02-20 10:45', type: 'create' },
-    { id: 15, user: 'Admin', action: 'Units Discarded', target: 'O- Ã— 1 - Haemolysed', module: 'Wastage', time: '2026-02-20 09:15', type: 'delete' },
+    { id: 14, user: 'Admin', action: 'Request Added', target: 'REQ-008 - O+ × 3 (Critical)', module: 'Requests', time: '2026-02-20 10:45', type: 'create' },
+    { id: 15, user: 'Admin', action: 'Units Discarded', target: 'O- × 1 - Haemolysed', module: 'Wastage', time: '2026-02-20 09:15', type: 'delete' },
 ];
 
 let nextAId = 16;
@@ -85,7 +85,7 @@ export default function AuditLogPage() {
                     <svg style={{ position: 'absolute', left: '12px', top: '50%', transform: 'translateY(-50%)', color: 'var(--text-tertiary)' }} width="14" height="14" fill="none" stroke="currentColor" strokeWidth="2" viewBox="0 0 24 24">
                         <circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" />
                     </svg>
-                    <input placeholder="Search action or targetâ€¦" value={search} onChange={e => { setSearch(e.target.value); setPage(1); }}
+                    <input placeholder="Search action or target…" value={search} onChange={e => { setSearch(e.target.value); setPage(1); }}
                         style={{ width: '100%', padding: '9px 13px 9px 35px', border: '1.5px solid var(--border)', borderRadius: '10px', fontSize: '13px', outline: 'none', background: 'var(--bg-card)', color: 'var(--text-primary)', fontFamily: 'Inter,sans-serif' }} />
                 </div>
                 <select value={module} onChange={e => { setModule(e.target.value); setPage(1); }}
@@ -129,7 +129,7 @@ export default function AuditLogPage() {
                                     </td>
                                     <td style={{ padding: '12px 18px' }}>
                                         <span style={{ padding: '4px 10px', borderRadius: '99px', fontSize: '12px', fontWeight: 700, background: ACTION_BG[e.type], color: ACTION_COLORS[e.type] }}>
-                                            {e.type === 'create' ? '+ Created' : e.type === 'update' ? '~ Updated' : 'Ã— Deleted'}
+                                            {e.type === 'create' ? '+ Created' : e.type === 'update' ? '~ Updated' : '× Deleted'}
                                         </span>
                                     </td>
                                 </tr>
@@ -144,7 +144,7 @@ export default function AuditLogPage() {
                 {/* Pagination */}
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', padding: '12px 18px', borderTop: '1px solid var(--border)', background: 'var(--bg-hover)' }}>
                     <span style={{ fontSize: '12px', color: 'var(--text-tertiary)' }}>
-                        Page {page} of {totalPages} Â· {filtered.length} events
+                        Page {page} of {totalPages} · {filtered.length} events
                     </span>
                     <div style={{ display: 'flex', gap: '6px' }}>
                         {[...Array(totalPages)].map((_, pi) => (
