@@ -1,6 +1,6 @@
 # LifeFlow Blood Bank Management System
 
-> A modern, full-featured frontend for managing blood bank operations — donors, inventory, donation camps, requests, TTI screening, thalassemia patients, and more. Built for Pakistan's healthcare context.
+> A modern, full-featured frontend for managing blood bank operations donors, inventory, donation camps, requests, TTI screening, thalassemia patients, and more. Built for Pakistan's healthcare context.
 
 **Live Repo:** [github.com/Aizaz-Noor/LifeFlow-BloodBank-Frontend](https://github.com/Aizaz-Noor/LifeFlow-BloodBank-Frontend)
 
@@ -109,17 +109,17 @@ BloodBank-Frontend/
 
 ## Features
 
-- 🔐 **Authentication** — Login / Signup with role-based views
-- 📊 **Dashboard** — Real-time blood inventory KPIs
-- 👥 **Donor Management** — Add, edit, search, and filter donors
-- 📋 **Blood Requests** — Track and fulfil incoming blood requests
-- 🏕️ **Camp Management** — Schedule and manage donation camps
-- 🧪 **TTI Screening** — Track Transfusion-Transmissible Infection tests
-- 🧬 **Thalassemia Module** — Dedicated patient management
-- 📉 **Wastage Tracking** — Log and analyze blood unit wastage
-- 📝 **Audit Log** — Full system activity trail
-- 📈 **Reports** — Exportable analytics and statistics
-- 🏠 **Public Home Page** — Donor recruitment landing page
+- **Authentication** -> Login / Signup with role-based views
+- **Dashboard** -> Real-time blood inventory KPIs
+- **Donor Management** -> Add, edit, search, and filter donors
+- **Blood Requests** -> Track and fulfil incoming blood requests
+- **Camp Management** -> Schedule and manage donation camps
+- **TTI Screening** -> Track Transfusion-Transmissible Infection tests
+- **Thalassemia Module** -> Dedicated patient management
+- **Wastage Tracking** -> Log and analyze blood unit wastage
+- **Audit Log** -> Full system activity trail
+- **Reports** -> Exportable analytics and statistics
+- **Public Home Page** -> Donor recruitment landing page
 
 ---
 
@@ -165,11 +165,11 @@ npm run preview
 
 ##  Author
 
-**Aizaz Noor** — Software Engineering, Semester 3  
+**Aizaz Noor** if you want to ask any thing you guys can catch up me here.
 📧 aizaznoorkhuwaja@gmail.com
 
 ---
 
 ## 📄 License
 
-This project is for academic purposes — **LifeFlow Blood Bank Management System** (University Project).
+This project is for academic purposes **LifeFlow Blood Bank Management System** (University Project).
