@@ -1,5 +1,5 @@
 <div align="center">
-  <h1>🩸 LifeFlow: Blood Bank Management System</h1>
+  <h1> LifeFlow: Blood Bank Management System</h1>
 
   <p>
     <strong>A modern, full-featured frontend for managing blood bank operations. Built specifically for Pakistan's healthcare context to streamline life-saving processes.</strong>
